@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: app2
+  labels:
+    apptwo: app2
+    app: test
+spec:
+  selector:
+    matchLabels:
+      apptwo: app2
+      app: test
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        apptwo: app2
+        app: test
+    spec:
+      containers:
+      - image: kalyanich/app2
+        name: app2
+        securityContext:
+          privileged: true
+        ports:
+        - containerPort: 80

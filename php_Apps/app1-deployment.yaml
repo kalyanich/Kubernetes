@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: app1
+  labels:
+    appone: app1
+    app: test
+spec:
+  selector:
+    matchLabels:
+      appone: app1
+      app: test
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        appone: app1
+        app: test
+    spec:
+      containers:
+      - image: app1
+        name: app1
+        securityContext:
+          privileged: true
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
