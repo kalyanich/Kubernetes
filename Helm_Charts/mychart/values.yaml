@@ -1,0 +1,16 @@
+replicas: 3
+
+container:
+  image: hashicorp/http-echo
+  arg1: "-text=Deploying Application 1.....!!!!! "
+  arg2: "-text=Heyyyyyy Deploying Application 2.....!!!!! "
+  port: 5678
+
+service1:
+  name: app1-svc
+  type: NodePort
+ 
+service2:
+  name: app2-svc
+  type: NodePort
+ 
